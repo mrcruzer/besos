@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorpresa para ti</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(135deg, #ff7e5f, #feb47b); }
+            100% { background: linear-gradient(135deg, #86a8e7, #91eae4); }
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            color: white;
+            background-color: #ff6f61;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: #ff3d3d;
+            transform: scale(1.1);
+        }
+
+        #mensaje {
+            display: none;
+            font-size: 28px;
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
+            transform: translateY(-20px);
+        }
+
+        #mensaje.visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="mostrarMensaje()">Haz clic aquí</button>
+    <div id="mensaje">¡Manuela te mando un 😘</div>
+    
+    <audio id="sonido" src="beso.mp3"></audio> <!-- Reemplaza con la ruta de tu archivo de sonido -->
+
+    <script>
+        function mostrarMensaje() {
+            const mensaje = document.getElementById('mensaje');
+            const sonido = document.getElementById('sonido');
+            mensaje.classList.add('visible');
+            setTimeout(function(){
+                sonido.play(); // Reproduce el sonido
+            }, 2000);
+            
+        }
+    </script>
+
+</body>
+</html>
